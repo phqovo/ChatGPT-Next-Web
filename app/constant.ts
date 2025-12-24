@@ -12,6 +12,7 @@ export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
 export const OPENAI_BASE_URL = "https://api.openai.com";
 export const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/";
 export const DEEPSEEK_BASE_URL = "https://api.deepseek.com";
+export const BAIDU_OATUH_URL = "https://aip.baidubce.com/oauth/2.0/token";
 
 export const CACHE_URL_PREFIX = "/api/cache";
 export const UPLOAD_URL = `${CACHE_URL_PREFIX}/upload`;
@@ -37,6 +38,7 @@ export enum ApiPath {
   Google = "/api/google",
   DeepSeek = "/api/deepseek",
   Artifacts = "/api/artifacts",
+  Stability = "/api/stability",
 }
 
 export enum SlotID {
@@ -81,8 +83,10 @@ export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
 export enum ServiceProvider {
   OpenAI = "OpenAI",
+  Azure = "Azure",
   Google = "Google",
   DeepSeek = "DeepSeek",
+  ByteDance = "ByteDance",
 }
 
 // Google API safety settings
@@ -114,9 +118,21 @@ export const Google = {
     `v1beta/models/${modelName}:streamGenerateContent`,
 };
 
+export const Azure = {
+  ExampleEndpoint: "https://{resource}.openai.azure.com",
+  ChatPath: (deployName: string, apiVersion: string) =>
+    `deployments/${deployName}/chat/completions?api-version=${apiVersion}`,
+  ImagePath: (deployName: string, apiVersion: string) =>
+    `deployments/${deployName}/images/generations?api-version=${apiVersion}`,
+};
+
 export const DeepSeek = {
   ExampleEndpoint: DEEPSEEK_BASE_URL,
   ChatPath: "chat/completions",
+};
+
+export const Stability = {
+  GeneratePath: "v2beta/stable-image/generate",
 };
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`;
@@ -254,7 +270,7 @@ export const VISION_MODEL_REGEXES = [
   /o4-mini/,
 ];
 
-export const EXCLUDE_VISION_MODEL_REGEXES = [];
+export const EXCLUDE_VISION_MODEL_REGEXES: RegExp[] = [];
 
 const openaiModels = [
   "gpt-4o",

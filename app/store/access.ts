@@ -34,6 +34,11 @@ const DEFAULT_ACCESS_STATE = {
   openaiUrl: DEFAULT_OPENAI_URL,
   openaiApiKey: "",
 
+  // azure
+  azureUrl: "",
+  azureApiKey: "",
+  azureApiVersion: "2023-08-01-preview",
+
   // google ai studio
   googleUrl: DEFAULT_GOOGLE_URL,
   googleApiKey: "",
@@ -43,6 +48,10 @@ const DEFAULT_ACCESS_STATE = {
   // deepseek
   deepseekUrl: DEFAULT_DEEPSEEK_URL,
   deepseekApiKey: "",
+
+  // stability
+  stabilityUrl: "",
+  stabilityApiKey: "",
 
   // server config
   needCode: true,

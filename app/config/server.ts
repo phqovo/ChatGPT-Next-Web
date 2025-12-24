@@ -29,6 +29,10 @@ declare global {
       GOOGLE_API_KEY?: string;
       GOOGLE_URL?: string;
 
+      // azure only
+      AZURE_URL?: string; // https://{azure-resource-url}/openai
+      AZURE_API_VERSION?: string; // 2023-08-01-preview
+
       // google tag manager
       GTM_ID?: string;
 
@@ -109,6 +113,9 @@ export const getServerSideConfig = () => {
     isGoogle,
     googleApiKey: getApiKey(process.env.GOOGLE_API_KEY),
     googleUrl: process.env.GOOGLE_URL,
+
+    azureUrl: process.env.AZURE_URL,
+    azureApiVersion: process.env.AZURE_API_VERSION,
 
     isDeepSeek,
     deepseekUrl: process.env.DEEPSEEK_URL,
